@@ -1,6 +1,20 @@
 ## Symptom
 Exception occurred when execute `ALTER TABLE add/drop column` sql on the replicated database for the use custom zk path ReplicatedMergeTree table(`zk path`: `/clickhouse/tables/{uuid}/{all}`).
 
+e.g:
+```sql
+clickhouse01 :) ALTER TABLE demo.users_dim_local  ADD COLUMN `remark` String;
+
+┌─shard─┬─replica──────┬─status─┬─num_hosts_remaining─┬─num_hosts_active─┐
+│ 01    │ clickhouse01 │ OK     │                   1 │                1 │
+└───────┴──────────────┴────────┴─────────────────────┴──────────────────┘
+↙ Progress: 1.00 rows, 49.00 B (0.05 rows/s., 2.39 B/s.)  49%
+1 row in set. Elapsed: 20.536 sec.
+
+Received exception from server (version 22.10.1):
+Code: 49. DB::Exception: Received from localhost:9000. DB::Exception: There was an error on 02|clickhouse02: Cannot execute replicated DDL query, maximum retries exceeded (probably it's a bug): While executing DDLQueryStatus. (LOGICAL_ERROR)
+```
+
 ## ClickHouse Cluster
 - Clickhouse cluster: `2 shards 1 replicas`
 - Clickhouse version: `22.10.1.1877`
