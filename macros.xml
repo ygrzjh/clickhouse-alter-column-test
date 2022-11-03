@@ -10,5 +10,6 @@
         <index>${SHARD}${REPLICA}</index>
         <shard>${SHARD}</shard>
         <replica>clickhouse${REPLICA}</replica>
+        <all>all</all>
     </macros>
 </clickhouse>

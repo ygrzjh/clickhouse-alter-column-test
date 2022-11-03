@@ -18,6 +18,18 @@
                 </replica>
             </shard>
         </default>
+        <all-replicated>
+            <shard>
+                <replica>
+                    <host>clickhouse01</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>clickhouse02</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </all-replicated>
     </remote_servers>
     <!-- If element has 'incl' attribute, then for it's value will be used corresponding substitution from another file.
          By default, path to file with substitutions is /etc/metrika.xml. It could be changed in config in 'include_from' element.

@@ -10,7 +10,7 @@ services:
     ports: 
       - "127.0.0.1:2181:2181"
   clickhouse01:
-    image: clickhouse/clickhouse-server:22.8.5.29
+    image: clickhouse/clickhouse-server:22.10.1.1877
     container_name: clickhouse01
     hostname: clickhouse01
     networks:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - zookeeper
   clickhouse02:
-    image: clickhouse/clickhouse-server:22.8.5.29
+    image: clickhouse/clickhouse-server:22.10.1.1877
     container_name: clickhouse02
     hostname: clickhouse02
     networks:
